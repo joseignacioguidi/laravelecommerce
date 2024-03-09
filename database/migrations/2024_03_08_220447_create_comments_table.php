@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('idUser');
+            $table->unsignedBigInteger('idProduct');
+            $table->integer('valoration');
+            $table->text('message');
+            $table->foreign('idUser')->references('id')->on('users');
+            $table->foreign('idProduct')->references('id')->on('products');
         });
     }
 

@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('product_sells', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('idProduct');
+            $table->unsignedBigInteger('idSell');
+            $table->integer('quantity');
+            $table->decimal('individualPrice', 10, 2);
+            $table->foreign('idProduct')->references('id')->on('products');
+            $table->foreign('idSell')->references('id')->on('sells');
         });
     }
 

@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('idUser');
+            $table->date('date');
+            $table->float('total');
+            $table->string('status');
+            $table->foreign('idUser')->references('id')->on('users');
         });
     }
 
